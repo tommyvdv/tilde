@@ -1,0 +1,16 @@
+#!/bin/bash
+
+alias e='/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-silent'
+alias v='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias o=open
+
+alias ls='ls -GF'
+alias ll='ls -lah'
+
+alias g='git'
+
+alias schanges="svn st | grep \"^[A|M]\""
+alias snew="svn st | grep \"^?\""
+
+alias remove_cache='cd tools/ && ./remove_cache && cd ..'
+

@@ -1,0 +1,170 @@
+#!/bin/bash
+
+#
+# Bash functions
+# self-written, copied, adapted...
+# If not written myself, I probably took/stole/adapted it from
+# Gary Bernhardt, Jan Moesen, Dave Lens, or some other dude(tte) on the web.
+#
+
+#
+# Create base structure for a fork module
+# Assume cwd = project root.
+#
+fork_module()
+{
+    module=$1
+
+    if [[ "$module" == "" ]]
+    then
+        echo "usage: fork_module <module>"
+    else
+        mkdir -p {back,front}end/modules/$module/layout/{templates,widgets}
+        mkdir -p {back,front}end/modules/$module/{actions,engine,widgets}
+        mkdir -p backend/modules/$module/installer/data
+
+        touch {back,front}end/modules/$module/engine/model.php
+
+        touch {back,front}end/modules/$module/actions/index.php
+        touch {back,front}end/modules/$module/layout/templates/index.tpl
+
+        touch backend/modules/$module/actions/{add,edit,delete,settings}.php
+        touch backend/modules/$module/layout/templates/{add,edit,delete,settings}.tpl
+
+        touch frontend/modules/$module/actions/detail.php
+        touch frontend/modules/$module/layout/templates/detail.tpl
+        touch {back,front}end/modules/$module/config.php
+
+        touch backend/modules/$module/installer/installer.php
+        touch backend/modules/$module/installer/data/{install.sql,locale.xml}
+    fi
+}
+
+
+#
+# Start a new fork project in the current directory.
+# @param string github url
+# @param string branch of the fork repo to use.
+#
+fork_start()
+{
+    giturl=$1
+    forkbranch=$2
+
+    if [[ "$giturl" == "" ]] || [[ "$forkbranch" == "" ]]
+    then
+        echo "usage: fork_start <giturl> <forkbranch>"
+    else
+        # first awk gets the 'projectname.git' part, second awk 'projectname'
+        project=$(echo $giturl | awk -F"/" '{print $NF}' | awk -F"." '{print $1}')
+        if [[ "$project" == "" ]]
+        then
+            echo "Could not get the project name from $giturl... exiting"
+            return 1;
+        else
+            git clone $giturl
+            cd $project
+            git remote add upstream git://github.com/forkcms/forkcms.git
+            git pull upstream $forkbranch
+            git push origin master
+        fi
+    fi
+}
+
+
+#
+# echo current git branch if available
+#
+git_branch()
+{
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        return 0
+    fi
+    branch=$(git branch 2>/dev/null | grep '^\*' | sed 's/^\* //')
+    echo ":$branch"
+}
+
+
+#
+# Use Google's Translate API to say things
+# Thanks to Jan Moesen
+#
+gsay()
+{
+    local lang=nl str="$*" tmp="/tmp/gsay.$$.mp3" i=0 line
+    [ -t 0 ] || str="$(cat)"
+    fmt -w 100 <<< "$str" | while read -r line
+        do url="http://translate.google.com/translate_tts?ie=UTF-8&tl=$lang&q=${line//&/%26}"
+        url="${url// /+}"
+        curl -sH 'User-Agent: Notabot' "$url" >| "$tmp" && afplay "$tmp"
+    done
+    rm -f "$tmp"
+}
+
+
+#
+# Upload a screenshot to imgur "on the fly":
+# Let user select region, take screenshot
+# Upload screenshot to imgur.com
+# Print resulting url to image.
+#
+# @see http://api.imgur.com/examples
+#
+imgur()
+{
+    # API Key provided by Alan@imgur.com
+    api_key="b3625162d3418ac51a9ee805b1840452"
+    url_api_upload="http://api.imgur.com/2/upload.xml"
+
+    fn_image="/tmp/screenshot-`date +%Y-%m-%d-%H-%M-%S`.png"
+    screencapture -ix $fn_image
+    response=`curl -s -F "image=@$fn_image" -F "key=$api_key" $url_api_upload`
+    echo $response | tail -1 | sed -E 's/.*<original>(.*)<\/original>.*/\1/'
+}
+
+
+#
+# Create an SSH config host entry and add my public key to that host.
+#
+# @param The identifier to use for this SSH host configuration.
+# @param The host name.
+# @param The username for that host.
+#
+ssh_configure_host()
+{
+    identifier=$1
+    hostname=$2
+    username=$3
+
+    if [[ "$identifier" == "" ]] || [[ "$username" == "" ]] || [[ "$hostname" == "" ]]
+    then
+        echo "usage: ssh_configure_host <identifier> <hostname> <username>"
+    else
+        echo -e "Host $identifier\n\tHostName $hostname\n\tUser $username\n\tIdentityFile ~/.ssh/id_rsa\n\tForwardAgent yes" >> ~/.ssh/config
+        ssh $identifier 'mkdir -p .ssh && cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+        # TODO Use ssh_test_key()?
+        tput bold; ssh -o PasswordAuthentication=no $identifier true && { tput setaf 2; echo 'Success!'; } || { tput setaf 1; echo 'Failure'; }; tput sgr0
+        ssh_load_autocomplete
+    fi
+}
+
+
+#
+# adds ~/.ssh/config to the ssh autocomplete
+# Call whenever ssh host config changes (@see ssh_configure_host)
+#
+ssh_load_autocomplete()
+{
+    complete -W "$(awk '/^\s*Host\s*/ { sub(/^\s*Host /, ""); print; }' ~/.ssh/config)" ssh
+}
+
+
+#
+# Test a giveh ssh_config host identifier.
+#
+ssh_test_key()
+{
+    identifier=$1
+    ssh -o PasswordAuthentication=no $identifier true && { tput setaf 2; echo 'Success!'; } || { tput setaf 1; echo 'Failure'; }; tput sgr0
+}
+
