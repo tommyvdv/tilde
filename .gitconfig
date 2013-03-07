@@ -1,0 +1,26 @@
+# vim: ft=gitconfig:
+
+[user]
+    email = per@dubgeiser.net
+    name = Per
+
+[alias]
+    s = status --short
+    st = status
+    aa = add --all
+    au = add --update
+    amend = commit --amend
+    ci = commit
+    co = checkout
+    d = diff
+    dc = diff --cached
+    l = "!(git --no-pager log -15 --pretty=format:'%C(yellow)%h%C(blue)%d%C(white) %s  %C(reset)%an, %cr' --abbrev-commit --date=relative --graph) && echo"
+    ll = log --pretty=format:'%C(yellow)%h%C(blue)%d%C(white) %s  %C(reset)%an, %cr' --abbrev-commit --date=relative --graph
+    pall = "!sh -c 'for x in $(git remote -v | grep \"(push)$\" | cut -f 1); do git push $x master; done'"
+    pom = push origin master
+    pum = pull origin master
+    info = "!git remote -v && git branch -a"
+
+[color]
+    ui = auto
+
