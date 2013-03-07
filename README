@@ -1,0 +1,8 @@
+Tilde
+=====
+Collection of config-, script-, dotfiles, etc... one is likely to find in a
+regular *NIX like home directory.
+
+The name is taken from https://github.com/janmoesen/tilde
+I always thought it was better naming than `etc` or `dotfiles`.
+
