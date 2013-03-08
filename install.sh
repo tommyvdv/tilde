@@ -12,6 +12,8 @@ to_symlink=(
     .bash_profile
     .gitconfig
     .inputrc
+    .screenrc
+    .tmux.conf
 );
 
 pushd `pwd`
