@@ -31,7 +31,7 @@ ssh_load_autocomplete
 PS1='\[${GREEN}\][\W\[${BLUE}\]$(git_branch)\[${GREEN}\]]\[${NORMAL}\] '
 
 # Path and environment vars.
-PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
 export EDITOR=vim
 
 # Keep more of the command history
