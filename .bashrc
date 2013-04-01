@@ -2,12 +2,10 @@ source ~/.bash/colors
 source ~/.bash/functions
 source ~/.bash/aliases
 
-# git auto completion
-if [ -f ~/.git-completion.bash ]; then
-    source ~/.git-completion.bash
-    # otherwise the 'g' alias won't autocomplete.
-    complete -o default -o nospace -F _git g
-fi
+# Installed by 'brew install git'
+source /usr/local/etc/bash_completion.d/git-completion.bash
+# otherwise the 'g' alias won't autocomplete.
+complete -o default -o nospace -F _git g
 
 ssh_load_autocomplete
 
