@@ -1,4 +1,5 @@
 # ~/.screenrc
+term "screen-256color"
 hardstatus on
 hardstatus alwayslastline "%{=b}%{G}%{b}%w"
 defscrollback 5000
