@@ -26,6 +26,8 @@ tmp/
 /.vim/
 /.viminfo
 /.vimrc
+/.cups/
+/.slocdata/
 
 /Desktop/
 /Documents/
