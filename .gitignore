@@ -28,6 +28,7 @@ tmp/
 /.vimrc
 /.cups/
 /.slocdata/
+/.pow
 
 /Desktop/
 /Documents/
