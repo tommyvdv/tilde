@@ -77,7 +77,7 @@ fork_start()
 #
 git_branch()
 {
-    if [ "`git rev-parse --git-dir`" != ".git" ]; then
+    if ! git rev-parse --git-dir > /dev/null 2>&1 || [ "`git rev-parse --git-dir`" != ".git" ]; then
         return 0
     fi
     branch=$(git branch 2>/dev/null | grep '^\*' | sed 's/^\* //')
