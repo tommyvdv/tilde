@@ -7,6 +7,55 @@
 # Gary Bernhardt, Jan Moesen, Dave Lens, or some other dude(tte) on the web.
 #
 
+
+#
+# Attach to an existing tmux session, create the session if it doesn't exist.
+#
+dev()
+{
+    project=$1
+
+    if [[ "$project" == "" ]]
+    then
+        echo "usage: dev <project>"
+        exit 1
+    fi
+    tmux has-session -t $project > /dev/null 2>&1
+    if [ $? != 0 ]; then
+        tmux_create_dev_session $project
+    fi
+    tmux attach -t $project
+}
+
+#
+# Create a new tmux session for developing.
+#
+tmux_create_dev_session()
+{
+    project=$1
+
+    if [ -d ~/Projects/$project ]; then
+        path=~/Projects/$project
+    elif [ -d ~/Sites/$project ]; then
+        path=~/Sites/$project
+    else
+        echo "$project not found, assuming ~/Sites"
+        path=~/Sites/
+    fi
+
+    tmux new-session -s $project -d
+    tmux send-keys -t $project "cd $path && clear" C-m
+
+    # split, go to right pane and try dbshell util
+    tmux split-window -h -t $project
+    tmux send-keys -t $project "cd $path" C-m
+    tmux send-keys -t $project "if [ -f ./tools/dbshell ]; then ./tools/dbshell; elif [ -f ./dbshell ]; then ./dbshell; fi" C-m
+
+    # to the main left pane
+	tmux select-pane -t $project -L
+}
+
+
 #
 # Create base structure for a fork module
 # Assume cwd = project root.
