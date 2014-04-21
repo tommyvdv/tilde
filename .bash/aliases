@@ -1,7 +1,6 @@
 #!/bin/bash
 
-alias e='/Applications/MacVim.app/Contents/MacOS/Vim -g --remote-silent'
-alias v='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias e=mvim
 alias o=open
 
 alias ls='ls -GF'
