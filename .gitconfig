@@ -1,8 +1,7 @@
 # vim: ft=gitconfig:
 
-[user]
-    email = per@dubgeiser.net
-    name = Per
+[include]
+    path = .gitconfig-user
 
 [alias]
     s = status --short --branch

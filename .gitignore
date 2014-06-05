@@ -4,6 +4,7 @@
 *.pyc
 tmp/
 svn-users.txt
+.gitconfig-user
 
 /.CFUserTextEncoding
 /.Trash/
