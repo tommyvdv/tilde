@@ -16,7 +16,6 @@
     dc = diff --cached
     l = "!(git --no-pager log -15 --pretty=format:'%C(green)%h%C(blue)%d%C(black) %s  %C(yellow)%an%C(reset), %cr' --abbrev-commit --date=relative --graph) && echo"
     ll = log --pretty=format:'%C(green)%h%C(blue)%d%C(black) %s  %C(yellow)%an%C(reset), %cr' --abbrev-commit --date=relative --graph
-    pall = "!sh -c 'for x in $(git remote -v | grep \"(push)$\" | cut -f 1); do git push $x master; done'"
     pom = push origin master
     pum = pull origin master
     info = "!git remote -v && git branch -a"
