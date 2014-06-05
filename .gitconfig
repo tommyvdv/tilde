@@ -5,7 +5,7 @@
     name = Per
 
 [alias]
-    s = status --short
+    s = status --short --branch
     st = status
     aa = add --all
     au = add --update
