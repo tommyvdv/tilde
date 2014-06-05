@@ -12,6 +12,7 @@ svn-users.txt
 /.cache/
 /.composer/
 /.dropbox/
+/.dropbox-master/
 /.filezilla/
 /.gist-vim
 /.git-completion.bash
