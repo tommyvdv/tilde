@@ -24,3 +24,6 @@
 
 [github]
     user = dubgeiser
+
+[push]
+    default = simple
