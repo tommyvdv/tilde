@@ -4,7 +4,7 @@
     path = .gitconfig-user
 
 [pretty]
-    shortnsweet = %C(green)%h%C(blue)%d%C(white) %s  %C(yellow)%an%C(reset), %cr
+    shortnsweet = %C(green)%h%C(blue)%d%C(black) %s  %C(yellow)%an%C(reset), %cr
 
 [alias]
     s = status --short --branch
