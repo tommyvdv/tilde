@@ -20,9 +20,8 @@ cdf() {
 #
 # Attach to an existing tmux session, create the session if it doesn't exist.
 #
-dev()
-{
-    project=$1
+dev() {
+    local project=$1
 
     if [[ "$project" == "" ]]
     then
@@ -39,9 +38,8 @@ dev()
 #
 # Create a new tmux session for developing.
 #
-tmux_create_dev_session()
-{
-    project=$1
+tmux_create_dev_session() {
+    local project=$1
 
     if [ -d ~/Projects/$project ]; then
         path=~/Projects/$project
@@ -69,9 +67,8 @@ tmux_create_dev_session()
 # Create base structure for a fork module
 # Assume cwd = project root.
 #
-fork_module()
-{
-    module=$1
+fork_module() {
+    local module=$1
 
     if [[ "$module" == "" ]]
     then
@@ -104,10 +101,9 @@ fork_module()
 # @param string github url
 # @param string branch of the fork repo to use.
 #
-fork_start()
-{
-    giturl=$1
-    forkbranch=$2
+fork_start() {
+    local giturl=$1
+    local forkbranch=$2
 
     if [[ "$giturl" == "" ]] || [[ "$forkbranch" == "" ]]
     then
@@ -134,8 +130,7 @@ fork_start()
 # Use Google's Translate API to say things
 # Thanks to Jan Moesen
 #
-gsay()
-{
+gsay() {
     local lang=nl str="$*" tmp="/tmp/gsay.$$.mp3" i=0 line
     [ -t 0 ] || str="$(cat)"
     fmt -w 100 <<< "$str" | while read -r line
@@ -155,15 +150,14 @@ gsay()
 #
 # @see http://api.imgur.com/examples
 #
-imgur()
-{
+imgur() {
     # API Key provided by Alan@imgur.com
-    api_key="b3625162d3418ac51a9ee805b1840452"
-    url_api_upload="http://api.imgur.com/2/upload.xml"
+    local api_key="b3625162d3418ac51a9ee805b1840452"
+    local url_api_upload="http://api.imgur.com/2/upload.xml"
 
-    fn_image="/tmp/screenshot-`date +%Y-%m-%d-%H-%M-%S`.png"
+    local fn_image="/tmp/screenshot-`date +%Y-%m-%d-%H-%M-%S`.png"
     screencapture -ix $fn_image
-    response=`curl -s -F "image=@$fn_image" -F "key=$api_key" $url_api_upload`
+    local response=`curl -s -F "image=@$fn_image" -F "key=$api_key" $url_api_upload`
     echo $response | tail -1 | sed -E 's/.*<original>(.*)<\/original>.*/\1/'
 }
 
@@ -173,8 +167,7 @@ imgur()
 # Because we don't want to symlink the vagrantfile in every project and we don't
 # want to go wandering away from our project root directory.
 #
-sneakers()
-{
+sneakers() {
     cd ~/Projects/sneakers
     vagrant $*
     cd - > /dev/null
@@ -188,11 +181,10 @@ sneakers()
 # @param The host name.
 # @param The username for that host.
 #
-ssh_configure_host()
-{
-    identifier=$1
-    hostname=$2
-    username=$3
+ssh_configure_host() {
+    local identifier=$1
+    local hostname=$2
+    local username=$3
 
     if [[ "$identifier" == "" ]] || [[ "$username" == "" ]] || [[ "$hostname" == "" ]]
     then
@@ -211,8 +203,7 @@ ssh_configure_host()
 # adds ~/.ssh/config to the ssh autocomplete
 # Call whenever ssh host config changes (@see ssh_configure_host)
 #
-ssh_load_autocomplete()
-{
+ssh_load_autocomplete() {
     complete -W "$(awk '/^\s*Host\s*/ { sub(/^\s*Host /, ""); print; }' ~/.ssh/config)" ssh
 }
 
@@ -220,9 +211,8 @@ ssh_load_autocomplete()
 #
 # Test a giveh ssh_config host identifier.
 #
-ssh_test_key()
-{
-    identifier=$1
+ssh_test_key() {
+    local identifier=$1
     ssh -o PasswordAuthentication=no $identifier true && { tput setaf 2; echo 'Success!'; } || { tput setaf 1; echo 'Failure'; }; tput sgr0
 }
 
