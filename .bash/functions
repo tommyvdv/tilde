@@ -52,7 +52,7 @@ tmux_create_dev_session()
     tmux send-keys -t $project "if [ -f ./tools/dbshell ]; then ./tools/dbshell; elif [ -f ./dbshell ]; then ./dbshell; fi" C-m
 
     # to the main left pane
-	tmux select-pane -t $project -L
+    tmux select-pane -t $project -L
 }
 
 
