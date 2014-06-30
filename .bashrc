@@ -36,4 +36,4 @@ export HISTSIZE=1000000
 # Vi mode
 #set -o vi
 
-archey
+archey --color
