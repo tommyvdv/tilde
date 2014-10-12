@@ -17,8 +17,6 @@
     dc = diff --cached
     l = "!echo && (git --no-pager log -15 --pretty=shortnsweet) && echo"
     ll = log --pretty=shortnsweet --graph
-    pom = push origin master
-    pum = pull origin master
     info = "!git remote -v && git branch -a"
 
 [color]
