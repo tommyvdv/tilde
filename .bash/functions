@@ -26,7 +26,7 @@ dev() {
     if [[ "$project" == "" ]]
     then
         echo "usage: dev <project>"
-        exit 1
+        return 1
     fi
     tmux has-session -t $project > /dev/null 2>&1
     if [ $? != 0 ]; then
@@ -39,6 +39,7 @@ dev() {
 # Create a new tmux session for developing.
 #
 tmux_create_dev_session() {
+    pushd `pwd`
     local project=$1
 
     if [ -d ~/Projects/$project ]; then
@@ -46,20 +47,28 @@ tmux_create_dev_session() {
     elif [ -d ~/Sites/$project ]; then
         path=~/Sites/$project
     else
-        echo "$project not found, assuming ~/Sites"
-        path=~/Sites/
+        echo "$project not found, exiting (TODO: offer to create it?)"
+        return 1
     fi
 
-    tmux new-session -s $project -d
-    tmux send-keys -t $project "cd $path && clear" C-m
+    # Start relative from the project path; we don't have to send 'cd $path' to
+    # the tmux sessions.
+    cd $path
 
-    # split, go to right pane and try dbshell util
-    tmux split-window -h -t $project
-    tmux send-keys -t $project "cd $path" C-m
-    tmux send-keys -t $project "if [ -f ./tools/dbshell ]; then ./tools/dbshell; elif [ -f ./dbshell ]; then ./dbshell; fi" C-m
+    tmux new-session -s $project -d -n main
+    if [ -x ./tools/dbshell ]; then
+        db_shell_command=./tools/dbshell;
+    fi
+    if [ -x ./dbshell ]; then
+        db_shell_command=./dbshell;
+    fi
+    if [ -n "$db_shell_command" ]; then
+        tmux new-window -n db -t $project
+        tmux send-keys -t "$project:db" "clear && $db_shell_command" C-m
+    fi
 
-    # to the main left pane
-    tmux select-pane -t $project -L
+    tmux select-window -t "$project:main"
+    popd
 }
 
 
