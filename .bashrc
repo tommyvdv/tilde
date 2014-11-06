@@ -5,10 +5,12 @@ source ~/.bash/aliases
 # Installed by 'brew install git'
 source /usr/local/etc/bash_completion.d/git-completion.bash
 source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/tmux
 
 
-# otherwise the 'g' alias won't autocomplete.
+# Enable autocomplete for aliases
 complete -o default -o nospace -F _git g
+complete -o default -o nospace -F _tmux t
 
 ssh_load_autocomplete
 
