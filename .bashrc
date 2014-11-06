@@ -22,7 +22,7 @@ GIT_PS1_SHOWCOLORHINTS=1
 # Thanks @janmoesen for pointing me to the \[\] surrounding the non-printing
 # chars.  These are necessary to prevent issues with command line editing,
 # -browsing, -completion.
-PROMPT_COMMAND='__git_ps1 "(\[${BLUE}\]\W\[${NORMAL}\])" " "'
+PROMPT_COMMAND='__git_ps1 "\[${REVERSE}\]\[${YELLOW}\]\t \u@\h\[${NORMAL}\] \[${BLUE}\]\W\[${NORMAL}\]" " "'
 
 # Path and environment vars.
 PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
