@@ -30,9 +30,10 @@ dev() {
     fi
     tmux has-session -t $project > /dev/null 2>&1
     if [ $? != 0 ]; then
-        tmux_create_dev_session $project
+        TMUX= tmux_create_dev_session $project
+        tmux attach -t $project
     fi
-    tmux attach -t $project
+    tmux switch-client -t $project
 }
 
 #
