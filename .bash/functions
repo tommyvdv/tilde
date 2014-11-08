@@ -73,7 +73,7 @@ tmux_create_dev_session() {
         tmux send-keys -t "$project:db" "clear && $db_shell_command" C-m
     fi
 
-    tmux select-window -t "$project:main"
+    tmux select-window -t "$project:1"
     popd
 }
 
