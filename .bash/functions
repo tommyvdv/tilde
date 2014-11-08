@@ -56,7 +56,12 @@ tmux_create_dev_session() {
     # the tmux sessions.
     cd $path
 
-    tmux new-session -s $project -d -n main
+    tmux new-session -s $project -d
+    tmux new-window -n console -t $project
+
+    # TODO Make cross-language (by find...[php|py|rb|pl|...]?)
+    tmux send-keys -t "$project:console" "clear && php -a" C-m
+
     if [ -x ./tools/dbshell ]; then
         db_shell_command=./tools/dbshell;
     fi
