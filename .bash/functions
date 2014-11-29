@@ -22,19 +22,31 @@ cdf() {
 #
 dev() {
     local project=$1
+    local switch=""
 
     if [[ "$project" == "" ]]
     then
         echo "usage: dev <project>"
         return 1
     fi
+
+    # Depending on whether or not we are already in a tmux session (this is why
+    # we check for $TMUX before it is created later on), we need to switch to
+    # that session differently.
+    if [[ "$TMUX" == "" ]]; then
+        switch='tmux attach -t'
+    else
+        switch='tmux switch-client -t'
+    fi
+
     tmux has-session -t $project > /dev/null 2>&1
     if [ $? != 0 ]; then
         TMUX= tmux_create_dev_session $project
-        tmux attach -t $project
     fi
-    tmux switch-client -t $project
+
+    $switch $project
 }
+
 
 #
 # Create a new tmux session for developing.
