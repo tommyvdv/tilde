@@ -1,0 +1,66 @@
+#!/bin/bash
+
+#
+# Bash git functions
+# self-written, copied, adapted...
+# If not written myself, I probably took/stole/adapted it from
+# Gary Bernhardt, Jan Moesen, Dave Lens, or some other dude(tte) on the web.
+#
+
+#
+# cd to my sites directory
+#
+project() {
+    ROOT="/Users/tommy/Sites/"
+    DIRECTORY=$1
+    echo "$BLUE change dir to project '$ROOT$DIRECTORY' $NORMAL"
+    if [ -d "$ROOT$DIRECTORY" ]; then
+        cd "$ROOT$DIRECTORY"
+    else
+        echo "$RED Dir '$ROOT$DIRECTORY' does not exist! Taking you to root instead. $NORMAL"
+        cd $ROOT
+    fi
+}
+
+#
+# git status -s
+#
+gs() {
+    echo "$BLUE git status -s $NORMAL"
+    git status -s
+}
+
+#
+# git commit -F commit.txt
+#
+gc() {
+    FILE="commit"
+    VARIABLE=${1-$FILE}
+    echo "$BLUE git commit -F $VARIABLE $NORMAL"
+
+    # if file exists
+    if [ ! -f $VARIABLE ]; then
+        echo "$RED File not found! $NORMAL"
+        git commit
+    else
+        git commit -F $VARIABLE
+        git log -1
+    fi
+}
+
+#
+# git commit -F commit.txt
+#
+greset() {
+    echo "$BLUE git reset --soft HEAD~1 $NORMAL"
+    git reset --soft HEAD~1
+}
+
+#
+# git commit -F commit.txt
+#
+gresethard() {
+    echo "$BLUE git reset HEAD --hard $NORMAL"
+    git reset HEAD --hard
+
+}
