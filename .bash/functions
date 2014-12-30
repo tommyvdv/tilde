@@ -91,39 +91,6 @@ tmux_create_dev_session() {
 
 
 #
-# Create base structure for a fork module
-# Assume cwd = project root.
-#
-fork_module() {
-    local module=$1
-
-    if [[ "$module" == "" ]]
-    then
-        echo "usage: fork_module <module>"
-    else
-        mkdir -p {back,front}end/modules/$module/layout/{templates,widgets}
-        mkdir -p {back,front}end/modules/$module/{actions,engine,widgets}
-        mkdir -p backend/modules/$module/installer/data
-
-        touch {back,front}end/modules/$module/engine/model.php
-
-        touch {back,front}end/modules/$module/actions/index.php
-        touch {back,front}end/modules/$module/layout/templates/index.tpl
-
-        touch backend/modules/$module/actions/{add,edit,delete,settings}.php
-        touch backend/modules/$module/layout/templates/{add,edit,delete,settings}.tpl
-
-        touch frontend/modules/$module/actions/detail.php
-        touch frontend/modules/$module/layout/templates/detail.tpl
-        touch {back,front}end/modules/$module/config.php
-
-        touch backend/modules/$module/installer/installer.php
-        touch backend/modules/$module/installer/data/{install.sql,locale.xml}
-    fi
-}
-
-
-#
 # Start a new fork project in the current directory.
 # @param string github url
 # @param string branch of the fork repo to use.
