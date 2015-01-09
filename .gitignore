@@ -5,6 +5,8 @@
 tmp/
 svn-users.txt
 .gitconfig-user
+soapui-settings.xml
+default-soapui-workspace.xml
 
 /.CFUserTextEncoding
 /.Trash/
