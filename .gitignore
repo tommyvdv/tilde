@@ -35,6 +35,8 @@ default-soapui-workspace.xml
 /.slocdata/
 /.pow
 /.vagrant.d/
+/.wireshark
+/.wireshark-etc
 
 /Applications/
 /Desktop/
