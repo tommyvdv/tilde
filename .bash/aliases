@@ -1,12 +1,24 @@
 #!/bin/bash
 
 alias e=mvim
-alias g=git
 alias o=open
 alias t=tmux
 
+# sneakers
+alias sneakers='cd /Users/tommy/code/sneakers'
+
+# sleep
+alias sleep="diskutil unmount disk$(diskutil list | grep storage | sed 's/.*disk\([^ ]*\).*/\1/') && diskutil unmount disk$(diskutil list | grep backup | sed 's/.*disk\([^ ]*\).*/\1/') && pmset sleepnow"
+
+# todo
+alias todo="cat -n -s /etc/motd"
+
+# git
+alias g=git
+
 alias ls='ls -GF'
 alias ll='ls -hlGFa'
+alias gls="echo '$BLUE git log --pretty=format:\" $YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n 10' && git log --pretty=format:'$YELLOW%h $GREEN%an$NORMAL %s' -n 10"
 
 alias pu='pushd $(pwd)'
 alias po='popd'

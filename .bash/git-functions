@@ -7,11 +7,115 @@
 # Gary Bernhardt, Jan Moesen, Dave Lens, or some other dude(tte) on the web.
 #
 
+# Define a timestamp function
+timestamp() {
+  date +"%Y%m%d %T"
+}
+atodo() {
+    if [[ -z "$1" ]]
+        then
+            echo $RED"Can't add a todo. Supply a message.$NORMAL"
+        else
+            FILE=/etc/motd
+            MESSAGE="$@"
+            if [ -d .git ]
+                then
+                repository=$(git rev-parse --show-toplevel)
+                branch=$(git rev-parse --abbrev-ref HEAD)
+            else
+                repository=''
+                branch=''
+            fi
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE"
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE" >> $FILE
+    fi
+}
+adone() {
+    if [[ -z "$1" ]]
+        then
+            echo $RED"Can't add a done. Supply a message.$NORMAL"
+        else
+            FILE=/etc/motd
+            MESSAGE="$@"
+            if [ -d .git ]
+                then
+                repository=$(git rev-parse --show-toplevel)
+                branch=$(git rev-parse --abbrev-ref HEAD)
+            else
+                repository=''
+                branch=''
+            fi
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE"
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE" >> $FILE
+    fi
+}
+
+#
+# switch case-mode
+#
+_switch() {
+    echo "$BLUE switch case-sensitive mode $NORMAL"
+    mv ~/_Projects temp_Projects
+    mv ~/Projects _Projects
+    mv ~/temp_Projects Projects
+}
+
+#
+# copy module
+#
+copymodule() {
+    MODULE="$3"
+
+    FROMBACKEND="~/Projects/$1/src/Backend/Modules/$MODULE"
+    TOBACKEND="~/Projects/$2/src/Backend/Modules/$MODULE"
+
+    FROMFRONTEND="~/Projects/$1/src/Frontend/Modules/$MODULE"
+    TOFRONTEND="~/Projects/$2/src/Frontend/Modules/$MODULE"
+
+    echo "$BLUE copy -r $FROMBACKEND $TOBACKEND $NORMAL"
+    copy -r $FROMBACKEND $TOBACKEND
+
+    echo "$BLUE copy -r $FROMFRONTEND $TOFRONTEND $NORMAL"
+    copy -r $FROMFRONTEND $TOFRONTEND
+}
+
+#
+# create www dir
+#
+lnwww() {
+    FROM="$(realpath)"
+    DIRECTORY=$1
+    TO="www"
+    echo "$BLUE ln -s $FROM/$DIRECTORY $TO $NORMAL"
+    ln -s $FROM/$DIRECTORY $TO
+}
+
+#
+# copy ssh public key to clipboard
+#
+cpssh() {
+    echo "$BLUE pbcopy < ~/.ssh/id_rsa.pub $NORMAL"
+    pbcopy < ~/.ssh/id_rsa.pub
+}
+
 #
 # cd to my sites directory
 #
+alias p=project
 project() {
     ROOT="/Users/tommy/Sites/"
+    DIRECTORY=$1
+    echo "$BLUE change dir to project '$ROOT$DIRECTORY' $NORMAL"
+    if [ -d "$ROOT$DIRECTORY" ]; then
+        cd "$ROOT$DIRECTORY"
+    else
+        echo "$RED Dir '$ROOT$DIRECTORY' does not exist! Taking you to root instead. $NORMAL"
+        cd $ROOT
+    fi
+}
+alias csp=csproject
+csproject() {
+    ROOT="/Volumes/Sites/"
     DIRECTORY=$1
     echo "$BLUE change dir to project '$ROOT$DIRECTORY' $NORMAL"
     if [ -d "$ROOT$DIRECTORY" ]; then
@@ -62,5 +166,16 @@ greset() {
 gresethard() {
     echo "$BLUE git reset HEAD --hard $NORMAL"
     git reset HEAD --hard
+
+}
+
+#
+# git commit -F commit.txt
+#
+gl() {
+    DEFAULT=3
+    AMOUNT=${1-$DEFAULT}
+    echo "$BLUE g log --pretty=oneline -$AMOUNT $NORMAL"
+    g log --pretty=oneline -$AMOUNT
 
 }

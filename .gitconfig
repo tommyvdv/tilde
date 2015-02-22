@@ -24,7 +24,7 @@
     ui = auto
 
 [github]
-    user = dubgeiser
+    user = tommyvandevelde
 
 [push]
     default = simple

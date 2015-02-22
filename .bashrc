@@ -26,6 +26,7 @@ GIT_PS1_SHOWCOLORHINTS=1
 # Thanks @janmoesen for pointing me to the \[\] surrounding the non-printing
 # chars.  These are necessary to prevent issues with command line editing,
 # -browsing, -completion.
+#PROMPT_COMMAND='__git_ps1 "\[${REVERSE}\]\[${BLUE}\]  \[${NORMAL}\]\[${BLUE}\] \W\[${NORMAL}\]" " "'
 PROMPT_COMMAND='__git_ps1 "\W\[${NORMAL}\]" " "'
 
 
@@ -41,6 +42,4 @@ export HISTSIZE=1000000
 # Vi mode
 #set -o vi
 
-archey --color
-
-clear
+#archey --color
