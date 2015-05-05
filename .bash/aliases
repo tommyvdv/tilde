@@ -3,7 +3,6 @@
 alias e=mvim
 alias g=git
 alias o=open
-alias t=tmux
 
 alias ls='ls -GF'
 alias ll='ls -hlGFa'

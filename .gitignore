@@ -16,6 +16,7 @@ default-soapui-workspace.xml
 /.dropbox/
 /.dropbox-master/
 /.filezilla/
+/.gem/
 /.gist-vim
 /.git-completion.bash
 /.gitk
@@ -33,6 +34,7 @@ default-soapui-workspace.xml
 /.vimrc
 /.cups/
 /.slocdata/
+/.trc
 /.pow
 /.vagrant.d/
 /.wireshark

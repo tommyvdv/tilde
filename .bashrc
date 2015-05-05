@@ -6,11 +6,10 @@ source ~/.bash/aliases
 source /usr/local/etc/bash_completion.d/git-completion.bash
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/tmux
-
+source /usr/local/etc/bash_completion.d/t-completion.sh
 
 # Enable autocomplete for aliases
 complete -o default -o nospace -F _git g
-complete -o default -o nospace -F _tmux t
 
 ssh_load_autocomplete
 
