@@ -74,11 +74,6 @@ tmux_create_dev_session() {
     # TODO Make cross-language (by find...[php|py|rb|pl|...]?)
     tmux send-keys -t "$project:console" "clear && php -a" C-m
 
-    if [ -n "$db_shell_command" ]; then
-        tmux new-window -n db -t $project
-        tmux send-keys -t "$project:db" "clear && $db_shell_command" C-m
-    fi
-
     tmux select-window -t "$project:1"
     popd
 }
