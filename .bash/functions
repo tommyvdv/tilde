@@ -110,22 +110,6 @@ fork_start() {
 
 
 #
-# Use Google's Translate API to say things
-# Thanks to Jan Moesen
-#
-gsay() {
-    local lang=nl str="$*" tmp="/tmp/gsay.$$.mp3" i=0 line
-    [ -t 0 ] || str="$(cat)"
-    fmt -w 100 <<< "$str" | while read -r line
-        do url="http://translate.google.com/translate_tts?ie=UTF-8&tl=$lang&q=${line//&/%26}"
-        url="${url// /+}"
-        curl -sH 'User-Agent: Notabot' "$url" >| "$tmp" && afplay "$tmp"
-    done
-    rm -f "$tmp"
-}
-
-
-#
 # Upload a screenshot to imgur "on the fly":
 # Let user select region, take screenshot
 # Upload screenshot to imgur.com
