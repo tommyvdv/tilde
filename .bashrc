@@ -27,7 +27,8 @@ PROMPT_COMMAND='__git_ps1 "\[${REVERSE}\]\[${BLUE}\] \t \[${NORMAL}\]\[${BLUE}\]
 
 # Path and environment vars.
 PATH="/usr/local/php5/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-export EDITOR=vim
+export EDITOR=~/bin/vim
+export GIT_EDITOR="$EDITOR"
 
 # Keep more of the command history
 export HISTCONTROL=erasedups
