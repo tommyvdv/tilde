@@ -19,7 +19,7 @@
     ll = log --pretty=shortnsweet --graph
     pullff = pull --ff-only
     s = status --short --branch
-	lostcommits = "!git fsck | grep commit | cut -d' ' -f3 | while read hash; do git rev-parse --verify --quiet $hash^2 && echo $hash; done | xargs git show"
+    lostcommits = "!git fsck | grep commit | cut -d' ' -f3 | while read hash; do git rev-parse --verify --quiet $hash^2 && echo $hash; done | xargs git show"
 
 [color]
     ui = auto
