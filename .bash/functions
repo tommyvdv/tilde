@@ -191,8 +191,6 @@ vup() {
     pushd `pwd`
     cd ~/.vim
     ./update
-    echo
-    echo "Use 'popd' to go back to the directory you were in."
-    echo "TODO: Check if anything changed and auto commit plugin by plugin."
+    popd
     echo
 }
