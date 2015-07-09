@@ -182,15 +182,3 @@ ssh_test_key() {
     local identifier=$1
     ssh -o PasswordAuthentication=no $identifier true && { tput setaf 2; echo 'Success!'; } || { tput setaf 1; echo 'Failure'; }; tput sgr0
 }
-
-
-#
-# Update Vim plugins
-#
-vup() {
-    pushd `pwd`
-    cd ~/.vim
-    ./update
-    popd
-    echo
-}
