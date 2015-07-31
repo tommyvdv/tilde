@@ -1,8 +1,16 @@
 #!/bin/bash
 
+alias apache-restart='sudo apachectl restart'
+alias release='~/Code/Scripts/release.sh'
+
 alias e=mvim
 alias o=open
 alias t=tmux
+
+# wijs-project-creator
+alias npr=/Volumes/Sites/tools/wijs-project-creator/npr
+alias secure=/Volumes/Sites/tools/wijs-project-creator/secure
+alias secure2=/Volumes/Sites/tools/wijs-project-creator/secure2
 
 # sneakers
 alias sneakers='cd /Users/tommy/code/sneakers'
@@ -10,15 +18,15 @@ alias sneakers='cd /Users/tommy/code/sneakers'
 # sleep
 alias sleep="diskutil unmount disk$(diskutil list | grep storage | sed 's/.*disk\([^ ]*\).*/\1/') && diskutil unmount disk$(diskutil list | grep backup | sed 's/.*disk\([^ ]*\).*/\1/') && pmset sleepnow"
 
-# todo
-alias todo="cat -n -s /etc/motd"
+# history timestamp
+HISTTIMEFORMAT="$BLUE%d/%m/%y %T $NORMAL"
 
 # git
 alias g=git
 
 alias ls='ls -GF'
 alias ll='ls -hlGFa'
-alias gls="echo '$BLUE git log --pretty=format:\" $YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n 10' && git log --pretty=format:'$YELLOW%h $GREEN%an$NORMAL %s' -n 10"
+alias gls='function __mygls() { echo echo "$BLUE git log --pretty=format:\" $YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n ${*:-10}" && git log --pretty=format:"$YELLOW%h $GREEN%an$NORMAL %s" -n ${*:-10}}; unset -f __mygls; }; __mygls'
 
 alias pu='pushd $(pwd)'
 alias po='popd'
@@ -37,3 +45,6 @@ alias flarge='find . -type f -print0 | xargs -0 du -s | sort -n | tail -10 | cut
 # TODO days => hours [=> minutes [=> seconds]]
 # TODO configurable dates?
 alias daystill="python -c 'from datetime import date; print \"Nog %sX slapen.\" % (date(2014,11,21) - date.today()).days'"
+
+# on startup shell do
+startup

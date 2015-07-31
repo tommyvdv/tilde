@@ -16,3 +16,6 @@ BLINK=$(tput blink)
 REVERSE=$(tput smso)
 UNDERLINE=$(tput smul)
 
+# const NORMAL = "[30m";
+# const GREEN = "[38;5;64m";
+# const RED = "[31m";

@@ -1,0 +1,69 @@
+#!/bin/bash
+
+#
+# Bash git functions
+# self-written, copied, adapted...
+# If not written myself, I probably took/stole/adapted it from
+# Gary Bernhardt, Jan Moesen, Dave Lens, or some other dude(tte) on the web.
+#
+
+# display todo list with line numbers
+alias todo="cat -n -s /etc/motd"
+
+# Define a timestamp function
+timestamp() {
+  date +"%Y%m%d %T"
+}
+
+# remove a todo item based on line number
+rmtodo() {
+    if [[ -z "$1" ]]
+        then
+            echo $RED"No todo specified. Supply a line-number.$NORMAL"
+        else
+            LINE=$1
+            sed "$1d" /etc/motd > /etc/motd.bak; mv /etc/motd.bak /etc/motd
+    fi
+}
+
+# add a todo item
+atodo() {
+    if [[ -z "$1" ]]
+        then
+            echo $RED"Can't add a todo. Supply a message.$NORMAL"
+        else
+            FILE=/etc/motd
+            MESSAGE="$@"
+            if [ -d .git ]
+                then
+                repository=$(git rev-parse --show-toplevel)
+                branch=$(git rev-parse --abbrev-ref HEAD)
+            else
+                repository=''
+                branch=''
+            fi
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE"
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE" >> $FILE
+    fi
+}
+
+# mark a todo item as done (incomplete)
+adone() {
+    if [[ -z "$1" ]]
+        then
+            echo $RED"Can't add a done. Supply a message.$NORMAL"
+        else
+            FILE=/etc/motd
+            MESSAGE="$@"
+            if [ -d .git ]
+                then
+                repository=$(git rev-parse --show-toplevel)
+                branch=$(git rev-parse --abbrev-ref HEAD)
+            else
+                repository=''
+                branch=''
+            fi
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE"
+            echo $YELLOW"T$NORMAL $(timestamp) $BRIGHT$repository$NORMAL $YELLOW$branch$NORMAL : $MESSAGE" >> $FILE
+    fi
+}
