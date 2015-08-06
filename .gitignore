@@ -27,6 +27,9 @@ default-soapui-workspace.xml
 /.notes
 /.pearrc
 /.php_history
+/.psql_history
+/.sonar/
+/.sqlite_history
 /.ssh/
 /.subversion/
 /.vim/
