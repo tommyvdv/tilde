@@ -1,6 +1,13 @@
 --sort-files
+
 --type-add=html=.tpl,.twig
+--type-add=js=json
+--type-add=vim=vimrc
+
 --type-set=txt=.rst
+--type-set=css=sass
+--type-set=MARKDOWN=md,mkd,markdown
+
 --smart-case
 --follow
 --flush
