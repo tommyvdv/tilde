@@ -19,11 +19,19 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
-# Last part of current working directory and the git branch we're in.
+# Prompt
 # Thanks @janmoesen for pointing me to the \[\] surrounding the non-printing
 # chars.  These are necessary to prevent issues with command line editing,
 # -browsing, -completion.
-PROMPT_COMMAND='__git_ps1 "\[${REVERSE}\]\[${BLUE}\] \t \[${NORMAL}\]\[${BLUE}\] \W\[${NORMAL}\]" " "'
+# Added the virtual environment, because sourcing the virtualenv activate code
+# did not work for me (__git_ps1() ignores this)
+prompt_virtual_env() {
+    if test -n "$VIRTUAL_ENV" ; then
+        echo " (\[${RED}\]`basename \"$VIRTUAL_ENV\"`\[${NORMAL}\])"
+    fi
+}
+PROMPT_COMMAND='__git_ps1 "\[${REVERSE}\]\[${BLUE}\] \t \[${NORMAL}\]\[${BLUE}\] \W\[${NORMAL}\]" "$(prompt_virtual_env) "'
+
 
 # Path and environment vars.
 PATH="/usr/local/php5/bin:~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
