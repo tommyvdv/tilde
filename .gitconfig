@@ -1,5 +1,8 @@
 # vim: ft=gitconfig:
 
+[core]
+	excludesfile = ~/.gitignore-global
+
 [include]
     path = .gitconfig-user
 
