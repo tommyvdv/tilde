@@ -26,7 +26,8 @@ alias g=git
 
 alias ls='ls -GF'
 alias ll='ls -hlGFa'
-alias gls='function __mygls() { echo echo "$BLUE git log --pretty=format:\" $YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n ${*:-10}" && git log --pretty=format:"$YELLOW%h $GREEN%an$NORMAL %s" -n ${*:-10}}; unset -f __mygls; }; __mygls'
+alias gls='function __mygls() { echo "$BLUE git log --date=relative --pretty=format:\"$YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n ${*:-10} $NORMAL" && git log --date=relative --pretty=format:"$YELLOW%h $GREEN%an$BLACK %s" -n ${*:-10}}; unset -f __mygls; }; __mygls'
+alias glst='function __myglst() { echo "$BLUE git log --date=relative --pretty=format:\"%ad $YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n ${*:-10} $NORMAL" && git log --date=relative --pretty=format:"%ad $YELLOW%h $GREEN%an$BLACK %s" -n ${*:-10}}; unset -f __mygls; }; __myglst'
 
 alias pu='pushd $(pwd)'
 alias po='popd'
