@@ -1,3 +1,5 @@
+--ignore-dir=docroot
+--ignore-dir=www
 --type-add=html=.tpl,.twig
 --type-set=txt=.rst
 --smart-case
