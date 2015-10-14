@@ -28,6 +28,8 @@ hipchatrooms.html
 /.lesshst
 /.mysql_history
 /.netrc
+/.node-gyp
+/.npm
 /.notes
 /.pearrc
 /.php_history
