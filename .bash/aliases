@@ -11,8 +11,6 @@ alias ll='ls -hlGFa'
 alias pu='pushd $(pwd)'
 alias po='popd'
 
-alias todo='cat ~/Documents/todo'
-
 alias schanges="svn st | grep \"^[A|M]\""
 alias snew="svn st | grep \"^?\""
 
