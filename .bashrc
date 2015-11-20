@@ -46,7 +46,7 @@ export HISTSIZE=1000000
 # Vi mode
 #set -o vi
 
-archey --color
+archey
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
