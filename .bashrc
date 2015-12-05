@@ -5,13 +5,17 @@ source ~/.bash/functions
 source ~/.bash/aliases
 source ~/.bash/todo-functions
 source ~/.bash/git-functions
+source ~/.bash/git-aliases
+source ~/.bash/symfony-aliases
 
+# ...
+alias ls='ls -GF'
+alias ll='ls -hlGFa'
 
 # Installed by 'brew install git'
 source /usr/local/etc/bash_completion.d/git-completion.bash
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/tmux
-
 
 # Enable autocomplete for aliases
 complete -o default -o nospace -F _git g

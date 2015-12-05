@@ -21,21 +21,8 @@ alias sleep="diskutil unmount disk$(diskutil list | grep storage | sed 's/.*disk
 # history timestamp
 HISTTIMEFORMAT="$BLUE%d/%m/%y %T $NORMAL"
 
-# symfony
-alias sc='echo "$BLUE app/console $NORMAL" && app/console'
-alias sccc='echo "$BLUE app/console cache:clear $NORMAL" && app/console cache:clear'
-alias sccw='echo "$BLUE app/console cache:clear --no-warmup $NORMAL" && app/console cache:clear --no-warmup'
-alias scdfl='echo "$BLUE app/console doctrine:fixtures:load $NORMAL" && app/console doctrine:fixtures:load'
-alias scdsu='echo "$BLUE app/console doctrine:schema:update $NORMAL" && app/console doctrine:schema:update'
-alias scdsuf='echo "$BLUE app/console doctrine:schema:update --force $NORMAL" && app/console doctrine:schema:update --force'
-
-# git
-alias g=git
-
-alias ls='ls -GF'
-alias ll='ls -hlGFa'
-alias gls='function __mygls() { echo "$BLUE git log --date=relative --pretty=format:\"$YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n ${*:-10} $NORMAL" && git log --date=relative --pretty=format:"$YELLOW%h $GREEN%an$BLACK %s" -n ${*:-10}}; unset -f __mygls; }; __mygls'
-alias glst='function __myglst() { echo "$BLUE git log --date=relative --pretty=format:\"%ad $YELLOW%h $GREEN%an$NORMAL %s $BLUE\" -n ${*:-10} $NORMAL" && git log --date=relative --pretty=format:"%ad $YELLOW%h $GREEN%an$BLACK %s" -n ${*:-10}}; unset -f __mygls; }; __myglst'
+# composer CPR
+alias cpr='echo "$BLUE composer $NORMAL" && composer'
 
 alias pu='pushd $(pwd)'
 alias po='popd'

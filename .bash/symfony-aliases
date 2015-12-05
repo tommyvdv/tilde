@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# symfony S
+alias sc='echo "$BLUE app/console $NORMAL" && app/console'
+alias sccc='echo "$BLUE app/console cache:clear $NORMAL" && app/console cache:clear'
+alias sccw='echo "$BLUE app/console cache:clear --no-warmup $NORMAL" && app/console cache:clear --no-warmup'
+# symfony S doctrine D
+alias scdfl='echo "$BLUE app/console doctrine:fixtures:load $NORMAL" && app/console doctrine:fixtures:load'
+alias scdfl-force='echo "$BLUE app/console doctrine:database:drop --force && app/console doctrine:database:create && app/console doctrine:schema:update --force && app/console doctrine:fixtures:load --no-interaction $NORMAL" && app/console doctrine:database:drop --force && app/console doctrine:database:create && app/console doctrine:schema:update --force && app/console doctrine:fixtures:load --no-interaction'
+alias scdsu='echo "$BLUE app/console doctrine:schema:update $NORMAL" && app/console doctrine:schema:update'
+alias scdsuf='echo "$BLUE app/console doctrine:schema:update --force $NORMAL" && app/console doctrine:schema:update --force'
+alias scdge='echo "$BLUE app/console doctrine:generate:entities $NORMAL" && app/console doctrine:generate:entities'
+# symfony S debug DG
+alias scdgr='echo "$BLUE app/console debug:router $NORMAL" && app/console debug:router'
+alias scdgt='echo "$BLUE app/console debug:translation $NORMAL" && app/console debug:translation'

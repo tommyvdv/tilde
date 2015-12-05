@@ -84,14 +84,6 @@ csproject() {
 }
 
 #
-# git status -s
-#
-gs() {
-    echo "$BLUE git status -s $NORMAL"
-    git status -s
-}
-
-#
 # git commit -F commit.txt
 #
 __DEPRECATED__gc() {
@@ -134,5 +126,4 @@ gl() {
     AMOUNT=${1-$DEFAULT}
     echo "$BLUE g log --pretty=oneline -$AMOUNT $NORMAL"
     g log --pretty=oneline -$AMOUNT
-
 }

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#
+# Bash bitbucket functions
+# self-written, copied, adapted...
+# If not written myself, I probably took/stole/adapted it from
+# some other dude(tte) on the web.
+#
+
+# create a repository
+# you know what, i'll make a python script…
