@@ -20,11 +20,33 @@
     pullff = pull --ff-only
     s = status --short --branch
 
+	# [STOLEN] DAS
+	a = add
+	aap = add --all -p
+	ap = add -p
+	cim = commit -m
+	di = diff
+	hist = log --pretty=format:\"%C(yellow)%h %ad %Creset| %s%d %C(green)[%an]%Creset\" --graph --date=short
+
+	# [MINE]
+	ls = log HEAD --date=relative --pretty=format:'%C(yellow)%h %C(green)%an%Creset %s' -n 10
+	lsn = log HEAD --date=relative --pretty=format:'%C(yellow)%h %C(green)%an%Creset %s' -n
+	lst = log --date=relative --pretty=format:"%ad %C(yellow)%h %C(green)%an%Creset %s" -n ${*:-10}}
+	pl = pull
+	ft = fetch
+
+	# [NOCLUE]
+	#hub = !echo "https://github.com/"`git config remote.origin.url` | sed -E "s/[a-z]+@github\.com://" | sed "s/\.git$//"
+	#hubn = !echo "https://github.com/"`git config remote.origin.url` | sed -E s/\[a-z\]+@github\.ncube.be\://
+	#hub = !echo "https://github.ncube.be/"`git config remote.origin.url` | sed -E s/[a-z]+@github.ncube.be:// | sed -E s/.git$//
+	#ncu = !sh -c 'HEAD=`git rev-parse HEAD` && SHA1=`[ "$0" = "sh" ] && echo $HEAD || echo $0` && echo `git hub`"/commit/"${HEAD}'
+
+
 [color]
     ui = auto
 
 [github]
-    user = tommyvdv
+    user = tommy
 
 [push]
     default = simple
