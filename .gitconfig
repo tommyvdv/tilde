@@ -1,7 +1,27 @@
 # vim: ft=gitconfig:
 
-[include]
-    path = .gitconfig-user
+[github]
+	user = tommyvdv
+    user = tommyvandevelde
+
+[user]
+	name = Tommy
+	name = Tommy Van de Velde
+	email = tommy.vandevelde@wijs.be
+	email = tommy@wijs.be
+	email = tommy.vandevelde@gmail.com
+
+[core]
+	excludesfile = ~/.gitignore-global
+
+#[include]
+#    path = .gitconfig-user
+
+[push]
+    default = simple
+
+[color]
+    ui = auto
 
 [pretty]
     shortnsweet = %C(green)%h%C(blue)%d%C(reset) %s  %C(yellow)%an%C(reset), %cr
@@ -40,13 +60,3 @@
 	#hubn = !echo "https://github.com/"`git config remote.origin.url` | sed -E s/\[a-z\]+@github\.ncube.be\://
 	#hub = !echo "https://github.ncube.be/"`git config remote.origin.url` | sed -E s/[a-z]+@github.ncube.be:// | sed -E s/.git$//
 	#ncu = !sh -c 'HEAD=`git rev-parse HEAD` && SHA1=`[ "$0" = "sh" ] && echo $HEAD || echo $0` && echo `git hub`"/commit/"${HEAD}'
-
-
-[color]
-    ui = auto
-
-[github]
-    user = tommy
-
-[push]
-    default = simple
