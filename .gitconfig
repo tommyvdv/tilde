@@ -1,30 +1,19 @@
 # vim: ft=gitconfig:
 
-[github]
-	user = tommyvdv
-    user = tommyvandevelde
-
-[user]
-	name = Tommy
-	name = Tommy Van de Velde
-	email = tommy.vandevelde@wijs.be
-	email = tommy@wijs.be
-	email = tommy.vandevelde@gmail.com
-
 [core]
 	excludesfile = ~/.gitignore-global
 
-#[include]
-#    path = .gitconfig-user
+[include]
+    path = .gitconfig-user
 
-[push]
-    default = simple
+[pretty]
+    shortnsweet = %C(green)%h%C(blue)%d%C(reset) %s  %C(yellow)%an%C(reset), %cr
 
 [color]
     ui = auto
 
-[pretty]
-    shortnsweet = %C(green)%h%C(blue)%d%C(reset) %s  %C(yellow)%an%C(reset), %cr
+[push]
+    default = simple
 
 [alias]
     aa = add --all
