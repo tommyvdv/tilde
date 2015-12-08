@@ -1,0 +1,14 @@
+startup() {
+	# display disk use and warn if higher than 50%
+	diskUse=$(df / | tail -1 | awk '{print $5}' | egrep -o "^([0-9])+")
+	color=$NORMAL
+	if [[ $diskUse > 50 ]]
+	then
+		color=$RED
+	fi
+	echo $color"Disk use is $diskUse%"$NORMAL
+
+    ls -lah /var/log/apache2/access_log | awk '{print $5" "$9}'
+    ls -lah /var/log/apache2/error_log | awk '{print $5" "$9}'
+    task
+}

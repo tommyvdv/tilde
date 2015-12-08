@@ -1,5 +1,4 @@
-source ~/.bash-tommy/my-functions
-
+source ~/.bash/startup
 source ~/.bash/colors
 source ~/.bash/functions
 source ~/.bash/aliases
