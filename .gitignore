@@ -15,7 +15,7 @@ svn-users.txt
 /.dropbox-master/
 /.filezilla/
 /.gist-vim
-/.git-completion.bash
+#/.git-completion.bash
 /.gitk
 /.gvimrc
 /.irb_history
