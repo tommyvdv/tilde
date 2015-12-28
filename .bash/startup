@@ -1,4 +1,5 @@
 startup() {
+	echo -n $GREEN && hostname
 	# display disk use and warn if higher than 50%
 	diskUse=$(df / | tail -1 | awk '{print $5}' | egrep -o "^([0-9])+")
 	color=$NORMAL

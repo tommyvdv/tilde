@@ -1,0 +1,4 @@
+#!/bin/bash
+alias e=mvim
+alias o=open
+alias t=tmux

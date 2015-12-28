@@ -40,7 +40,8 @@
 	# [MINE]
 	ls = log HEAD --date=relative --pretty=format:'%C(yellow)%h %C(green)%an%Creset %s' -n 10
 	lsn = log HEAD --date=relative --pretty=format:'%C(yellow)%h %C(green)%an%Creset %s' -n
-	lst = log --date=relative --pretty=format:"%ad %C(yellow)%h %C(green)%an%Creset %s" -n ${*:-10}}
+	lst = log --date=relative --pretty=format:'%ad %C(yellow)%h %C(green)%an%Creset %s' -n 10
+	lstn = log --date=relative --pretty=format:'%ad %C(yellow)%h %C(green)%an%Creset %s' -n
 	pl = pull
 	ft = fetch
 

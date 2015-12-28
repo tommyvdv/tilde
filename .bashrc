@@ -1,4 +1,3 @@
-source ~/.bash/startup
 source ~/.bash/colors
 source ~/.bash/functions
 source ~/.bash/aliases
@@ -6,10 +5,27 @@ source ~/.bash/todo-functions
 source ~/.bash/git-functions
 source ~/.bash/git-aliases
 source ~/.bash/symfony-aliases
+source ~/.bash/app-aliases
+source ~/.bash/project-functions
 
 # ...
 alias ls='ls -GF'
 alias ll='ls -hlGFa'
+
+# Make it easy to access my projects
+CSPROJECTROOT='/Volumes/Sites'
+alias csp=csproject
+csproject() {
+    ROOT="/Volumes/Sites/"
+    DIRECTORY=$1
+    echo "$BLUE change dir to project '$ROOT$DIRECTORY' $NORMAL"
+    if [ -d "$ROOT$DIRECTORY" ]; then
+        cd "$ROOT$DIRECTORY"
+    else
+        echo "$RED Dir '$ROOT$DIRECTORY' does not exist! Taking you to root instead. $NORMAL"
+        cd $ROOT
+    fi
+}
 
 # Installed by 'brew install git'
 source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -49,3 +65,5 @@ export HISTSIZE=1000000
 #set -o vi
 
 #archey --color
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
