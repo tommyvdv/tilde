@@ -16,6 +16,7 @@ hipchatrooms.html
 /.bash_history
 /.cache/
 /.composer/
+/.config/
 /.dropbox/
 /.dropbox-master/
 /.filezilla/
@@ -49,6 +50,7 @@ hipchatrooms.html
 /.slocdata/
 /.trc
 /.pow
+/.v8flags.*.json
 /.vagrant.d/
 /.wireshark
 /.wireshark-etc
