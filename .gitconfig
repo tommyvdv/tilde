@@ -1,7 +1,8 @@
 # vim: ft=gitconfig:
 
 [core]
-	excludesfile = ~/.gitignore-global
+    excludesfile = ~/.gitignore-global
+    whitespace = tab-in-indent diff --check,tab-in-indent
 
 [include]
     path = .gitconfig-user
