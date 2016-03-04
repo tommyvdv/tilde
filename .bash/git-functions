@@ -1,6 +1,40 @@
 #!/bin/bash
 
 #
+# The whitespace rules used in "git apply --whitespace" and "git diff" gained a
+# new member in the family (tab-in-indent) to help projects with policy to
+# indent only with spaces.
+#
+# It is controlled and used in the same ways as the other whitespace checking
+# options.
+#
+# The highlighting in git diff is the same as the other whitespace errors.
+# Checking is available with git diff --check.
+# Et cetera.
+# Add tab-in-indent to the value of the core.whitespace configuration variable
+# to enable it (probably either in one or more specific repositories or in
+# your “global” (per-use) configuration).
+#
+# Thank to Chris Johnsen
+#
+
+# set-show-tabs() {
+#     global=
+#     test "$1" = -g || test "$1" = --global && global=--global
+#     cws=$(git config $global core.whitespace)
+#     case "$cws" in
+#         tab-in-indent,*|*,tab-in-indent|*,tab-in-indent,*) ;;
+#         *) git config $global core.whitespace "$cws"${cws:+,}tab-in-indent ;;
+#     esac
+# }
+# set-show-tabs           # only in local repository
+# set-show-tabs --global  # for all your Git activities
+# or just edit it manually with "git config [--global] --edit"
+# Or, you can set it for individual commands (git -c is also from 1.7.2):
+# git -c core.whitespace=tab-in-indent diff --check
+# ------------------------------------------------------------------------------
+
+#
 # Bash git functions
 # self-written, copied, adapted...
 # If not written myself, I probably took/stole/adapted it from

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 alias apache-restart='sudo apachectl restart'
-alias release='~/Code/Scripts/release.sh'
+alias release='/Volumes/Sites/tools/release.sh'
+alias doctoc='/Volumes/Sites/tools/doctoc/doctoc.js'
 
 # capistrano
 alias cap2='cap _2.15.5_'

@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# Make it easy to access projects by autocompleting directory names.
 
 source ~/.bash_completion/project-completion.bash
 alias csp=csproject
@@ -12,4 +14,8 @@ csproject() {
         echo "$RED Dir '$ROOT$DIRECTORY' does not exist! Taking you to root instead. $NORMAL"
         cd $ROOT
     fi
+}
+
+copydocumentation() {
+	find ./* -name "exclude" -depth 1 | awk -F: '{ n=split($1,arr,"\/"); var=arr[2]; print "scp -prq "$1"\/ \/Volumes\/Sites\/docs\/"var"\/" }' | while read line; do $line; done
 }

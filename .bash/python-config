@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# python
+
+# virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh;
+# The variable WORKON_HOME tells virtualenvwrapper where to place your virtual
+# environments. The default is $HOME/.virtualenvs. If the directory does not
+# exist when virtualenvwrapper is loaded, it will be created automatically.
+#export WORKON_HOME=~/Envs
+# The variable PROJECT_HOME tells virtualenvwrapper where to place your project
+# working directories. The variable must be set and the directory created before
+# mkproject is used.
+export PROJECT_HOME=~/projects/python
+
+# [NOTE] Installed opencv 3.1.0-dev in virtualenv cv
