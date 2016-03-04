@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function __glink(){
-	{ git remote show origin | grep Push | awk '{ print $3 }' | sed 's/github.ncube.be:/https:\/\/github.ncube.be\//' | sed 's/git@//' | sed 's/\.git/\/commit\//'; git rev-parse $1;  } | sed -e 'N;s/\n//'
+	{ git remote show origin | grep Push | awk '{ print $3 }' | sed 's/github.ncube.be:/https:\/\/github.ncube.be\//' | sed 's/git@//' | sed 's/\.git/\/commit\//'; git rev-parse ${1:-$(git log -n 1 | head -n 1 | git rev-parse --short $(awk '{ print $2 }'))};  } | sed -e 'N;s/\n//'
 }
 
 alias glink='__glink'
