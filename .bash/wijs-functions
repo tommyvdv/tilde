@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Add property of wijs doc block
+
+addpropertyofwijsto(){
+	find $1 -type f -name '*.php' | while read f; do if [[ $(head -n 11 $f | tr '\n' ' ' | sed 's/ //g' | grep '<?phpnamespace') ]]; then cat $f | sed -i.bak -e 's/<?php/<?php\
+\
+\/\*\*\
+\ * This file is property of Wijs.be\
+\ *\
+\ * For the full copyright and license information, please view the license\
+\ * file that was distributed with this source code.\
+\ *\//' $f && rm -rf $f'.bak'; fi; done;
+}

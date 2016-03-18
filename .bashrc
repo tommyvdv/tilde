@@ -12,6 +12,9 @@ source ~/.bash/vlc-config
 source ~/.bash/go-config
 source ~/.bash/python-config
 
+# wijs specific
+source ~/.bash/wijs-functions
+
 # ...
 alias ls='ls -GF'
 alias ll='ls -hlGFa'
