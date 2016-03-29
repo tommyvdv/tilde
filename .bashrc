@@ -8,6 +8,7 @@ source ~/.bash/symfony-aliases
 source ~/.bash/app-aliases
 source ~/.bash/project-functions
 source ~/.bash/homebrew-config
+source ~/.bash/homebrew-functions
 source ~/.bash/vlc-config
 source ~/.bash/go-config
 source ~/.bash/python-config
