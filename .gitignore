@@ -32,6 +32,7 @@ hipchatrooms.html
 /.mysql_history
 /.netrc
 /.node-gyp
+/.node_repl_history
 /.npm
 /.notes
 /.oracle_jre_usage
