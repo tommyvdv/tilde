@@ -49,6 +49,7 @@ hipchatrooms.html
 /.vim/
 /.viminfo
 /.vimrc
+/.wget-hsts
 /.cups/
 /.slocdata/
 /.trc
