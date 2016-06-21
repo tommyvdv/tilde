@@ -21,7 +21,7 @@ set -e
 base_dir="/usr/local"
 symlink="/usr/local/php5"
 version=$1
-active_dir="$base_dir/$(ls "$base_dir" | ack "php5-$version")"
+active_dir="$base_dir/$(ls "$base_dir" | grep "php5-$version")"
 
 if [[ -d "$active_dir" ]]; then
     if [[ -L "$symlink" ]]; then
