@@ -15,6 +15,12 @@
 # Script will look for a directory containing 'php5-5.4' or 'php5-7.0'
 # respectively, point /usr/local/php5 to that and restart apache.
 #
+# Behavior like for example;
+#   $ phps 5
+# when there are multiple PHP versions available is untested, but will most
+# likely bork this script, so be specific when multiple major versions are
+# installed.
+#
 
 set -e
 
