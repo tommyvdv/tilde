@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#
+# Switch PHP version on the system.
+# This assumes installs from liip (http://php-osx.liip.ch/)
+# This uses directories under /usr/local and a symlink /user/local/php5 that
+# points to the directory with the specific PHP install.
+# changing the symlink and restarting apache is enough to switch the php version.
+# Might be naive and not so robust, but good enough so far.
+#
+# Examples:
+#   $ phps 5.4
+#   $ phps 7.0
+#
+# Script will look for a directory containing 'php5-5.4' or 'php5-7.0'
+# respectively, point /usr/local/php5 to that and restart apache.
+#
+
+set -e
+
+base_dir="/usr/local"
+symlink="/usr/local/php5"
+version=$1
+active_dir="$base_dir/$(ls "$base_dir" | ack "php5-$version")"
+
+if [[ -d "$active_dir" ]]; then
+    if [[ -L "$symlink" ]]; then
+        sudo rm "$symlink"
+    fi
+    sudo ln -s "$active_dir" "$symlink"
+    sudo apachectl restart
+fi
