@@ -34,6 +34,12 @@ base_dir="/usr/local"
 # The symlink that represents the currently used PHP version.
 symlink="/usr/local/php5"
 version=$1
+
+if [[ "$version" == "" ]]; then
+    echo "usage: phps <version/part of version>"
+    exit 1
+fi
+
 active_dir="$base_dir/$(ls "$base_dir" | grep "php5-$version")"
 
 if [[ -d "$active_dir" ]]; then
