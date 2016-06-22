@@ -19,11 +19,9 @@
 # Script will look for a directory containing 'php5-5.4' or 'php5-7.0'
 # respectively, point `$symlink` to that and restart apache.
 #
-# Behavior like for example;
+# Behavior for:
 #   $ phps 5
-# when there are multiple PHP versions available is untested, but will most
-# likely bork this script, so be specific when multiple major versions are
-# installed.
+# when there are multiple PHP 5.* versions, will result in no change.
 #
 
 set -e
