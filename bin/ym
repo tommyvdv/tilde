@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+#
+# ym = yermama
+# Generate an S3 url for my 'yermama' bucket
+#
+
+import sys
+import urllib
+
+
+def usage():
+    print "usage: ym <filename>"
+
+
+if len(sys.argv) < 2:
+    usage()
+    exit(1)
+
+base_url = "https://yermama.s3-us-west-2.amazonaws.com/%s"
+file_name = sys.argv[1]
+print base_url % urllib.quote_plus(file_name)

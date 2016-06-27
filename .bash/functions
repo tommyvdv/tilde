@@ -74,52 +74,8 @@ tmux_create_dev_session() {
     # TODO Make cross-language (by find...[php|py|rb|pl|...]?)
     tmux send-keys -t "$project:console" "clear && php -a" C-m
 
-    if [ -x ./tools/dbshell ]; then
-        db_shell_command=./tools/dbshell;
-    fi
-    if [ -x ./dbshell ]; then
-        db_shell_command=./dbshell;
-    fi
-    if [ -n "$db_shell_command" ]; then
-        tmux new-window -n db -t $project
-        tmux send-keys -t "$project:db" "clear && $db_shell_command" C-m
-    fi
-
     tmux select-window -t "$project:1"
     popd
-}
-
-
-#
-# Create base structure for a fork module
-# Assume cwd = project root.
-#
-fork_module() {
-    local module=$1
-
-    if [[ "$module" == "" ]]
-    then
-        echo "usage: fork_module <module>"
-    else
-        mkdir -p {back,front}end/modules/$module/layout/{templates,widgets}
-        mkdir -p {back,front}end/modules/$module/{actions,engine,widgets}
-        mkdir -p backend/modules/$module/installer/data
-
-        touch {back,front}end/modules/$module/engine/model.php
-
-        touch {back,front}end/modules/$module/actions/index.php
-        touch {back,front}end/modules/$module/layout/templates/index.tpl
-
-        touch backend/modules/$module/actions/{add,edit,delete,settings}.php
-        touch backend/modules/$module/layout/templates/{add,edit,delete,settings}.tpl
-
-        touch frontend/modules/$module/actions/detail.php
-        touch frontend/modules/$module/layout/templates/detail.tpl
-        touch {back,front}end/modules/$module/config.php
-
-        touch backend/modules/$module/installer/installer.php
-        touch backend/modules/$module/installer/data/{install.sql,locale.xml}
-    fi
 }
 
 
@@ -150,22 +106,6 @@ fork_start() {
             git push origin master
         fi
     fi
-}
-
-
-#
-# Use Google's Translate API to say things
-# Thanks to Jan Moesen
-#
-gsay() {
-    local lang=nl str="$*" tmp="/tmp/gsay.$$.mp3" i=0 line
-    [ -t 0 ] || str="$(cat)"
-    fmt -w 100 <<< "$str" | while read -r line
-        do url="http://translate.google.com/translate_tts?ie=UTF-8&tl=$lang&q=${line//&/%26}"
-        url="${url// /+}"
-        curl -sH 'User-Agent: Notabot' "$url" >| "$tmp" && afplay "$tmp"
-    done
-    rm -f "$tmp"
 }
 
 
@@ -242,4 +182,3 @@ ssh_test_key() {
     local identifier=$1
     ssh -o PasswordAuthentication=no $identifier true && { tput setaf 2; echo 'Success!'; } || { tput setaf 1; echo 'Failure'; }; tput sgr0
 }
-

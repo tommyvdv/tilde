@@ -1,8 +1,13 @@
 #!/bin/bash
 
 alias apache-restart='sudo apachectl restart'
-alias release='/Volumes/Sites/tools/release.sh'
-alias doctoc='/Volumes/Sites/tools/doctoc/doctoc.js'
+# alias release='/Volumes/Sites/tools/release.sh'
+# alias doctoc='/Volumes/Sites/tools/doctoc/doctoc.js'
+alias c=./app/console
+alias cap2='ruby -S cap _2.15.5_'
+alias e=mvim
+alias g=git
+alias o=open
 
 # capistrano
 alias cap2='ruby -S cap _2.15.5_'
@@ -42,4 +47,4 @@ alias flarge='find . -type f -print0 | xargs -0 du -s | sort -n | tail -10 | cut
 
 # TODO days => hours [=> minutes [=> seconds]]
 # TODO configurable dates?
-alias daystill="python -c 'from datetime import date; print \"Nog %sX slapen.\" % (date(2014,11,21) - date.today()).days'"
+alias daystill="python -c 'from datetime import date; print \"Nog %sX slapen.\" % (date(2016,2,5) - date.today()).days'"
