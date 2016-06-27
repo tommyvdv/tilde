@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# NPR script needs NPR_DOCROOT
+NPR_DOCROOT='/Volumes/Sites/'
+
 # Add property of wijs doc block
 
 addpropertyofwijsto(){
@@ -11,4 +14,16 @@ addpropertyofwijsto(){
 \ * For the full copyright and license information, please view the license\
 \ * file that was distributed with this source code.\
 \ *\//' $f && rm -rf $f'.bak'; fi; done;
+}
+
+# Prepare gulp for a project
+# see: https://github.com/getchopstick/chopstick-boilerplate
+makereadythegulp (){
+	gem update --system
+	gem install bundler
+	bundle install
+	npm install -g bower
+	bower install
+	npm install -g gulp
+	npm install
 }

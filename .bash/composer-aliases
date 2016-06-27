@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# composer alias
+# alias composers='php -n /usr/local/bin/../Cellar/composer/1.0.0-alpha8/bin/../libexec/composer.phar'
+# alias composer='php -n \'$(realpath /usr/local/bin/composer)\''
+# alias composer='php -n -d extension=xdebug.so composer'
+# alias composer='php -n \'$(realpath /usr/local/bin/composer)\''

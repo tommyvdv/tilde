@@ -5,6 +5,7 @@ source ~/.bash/todo-functions
 source ~/.bash/git-functions
 source ~/.bash/git-aliases
 source ~/.bash/symfony-aliases
+source ~/.bash/composer-aliases
 source ~/.bash/app-aliases
 source ~/.bash/project-functions
 source ~/.bash/homebrew-config
@@ -12,6 +13,7 @@ source ~/.bash/homebrew-functions
 source ~/.bash/vlc-config
 source ~/.bash/go-config
 source ~/.bash/python-config
+source ~/.bash/phpbrew-config
 
 # wijs specific
 source ~/.bash/wijs-functions
@@ -24,6 +26,8 @@ alias ll='ls -hlGFa'
 alias bs=__open_bash_stack
 __open_bash_stack(){
 	sublime ~/Dotfiles/tilde/
+	# sublime /etc/apache2/vhosts
+	# sublime /etc/apache2/httpd.conf
 	# sublime '.zshrc'
 }
 

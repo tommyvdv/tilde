@@ -5,11 +5,12 @@ alias release='/Volumes/Sites/tools/release.sh'
 alias doctoc='/Volumes/Sites/tools/doctoc/doctoc.js'
 
 # capistrano
-alias cap2='cap _2.15.5_'
+alias cap2='ruby -S cap _2.15.5_'
 alias cap3=cap
 
 # wijs-project-creator
 alias npr=/Volumes/Sites/tools/wijs-project-creator/npr
+#alias nh=/Volumes/Sites/tools/wijs-project-creator/nh
 alias secure=/Volumes/Sites/tools/wijs-project-creator/secure
 alias secure2=/Volumes/Sites/tools/wijs-project-creator/secure2
 

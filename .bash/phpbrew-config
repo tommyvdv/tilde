@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# phpbrew
+
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
