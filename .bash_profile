@@ -13,4 +13,6 @@ startup
 # Consider refactoring bashrc to remove all PATH.
 # PATH=~/.composer/vendor/bin:$PATH
 
-alias composer="php -n $(cat $(which composer) | grep composer.phar | awk '{print $7}')"
+# LIIP PHP should make this obsolete.
+# alias composer="php -n $(cat $(which composer) | grep composer.phar | awk '{print $7}')"
+alias composer="php $(cat $(which composer) | grep composer.phar | awk '{print $7}')"

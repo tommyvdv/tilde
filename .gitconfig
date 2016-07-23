@@ -13,6 +13,7 @@
 
 [pretty]
   shortnsweet = %C(green)%h%C(blue)%d%C(reset) %s  %C(yellow)%an%C(reset), %cr
+  whowhenwhere = %C(red) %cn %>|(40) %C(blue) %ar %>|(80) %C(reset)
 
 [color]
   ui = auto
@@ -31,10 +32,14 @@
   info = "!git remote -v && git branch -a"
   l = "!echo && (git --no-pager log -15 --pretty=shortnsweet) && echo"
   ll = log --pretty=shortnsweet --graph
+  lt = tag -n -n1
   pullff = pull --ff-only
   s = status --short --branch
   su = diff --name-only --diff-filter=U
   pt = !git tag -l | xargs git tag -d && git fetch -t
+  contains = !sh -c 'git branch -a --contains $1' -
+  branchauthors = "! for branch in `git branch -r | grep -v HEAD`;do echo `git show --pretty=whowhenwhere $branch | head -n 1` \t$branch; done | sort -r"
+  oldest-ancestor = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
 
   # [STOLEN] DAS
   a = add

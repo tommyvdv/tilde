@@ -1,0 +1,16 @@
+#!/bin/bash
+
+getpriceforbmwpartnumber(){
+	local partnumber="$@"
+
+	if [[ "$partnumber" == "" ]]
+    then
+        echo "usage: getpriceforbmwpartnumber <partnumber>"
+    else
+    	partnumber=$(echo $partnumber | sed 's/ //g')
+    	$(curl -s http://www.kfm-motorraeder.de/cms/en/genuine-spare-parts/bmw-spare-parts?itemid=$partnumber > ~/tmp/getpriceforbmwpartnumber)
+    	price=$(cat ~/tmp/getpriceforbmwpartnumber | grep 'itemprop="price"' | hxselect -c 'span[itemprop="price"]')
+    	name=$(cat ~/tmp/getpriceforbmwpartnumber | grep 'itemprop="name"' | hxselect -c 'span[itemprop="name"]')
+    	echo "$partnumber $name $price"
+    fi
+}

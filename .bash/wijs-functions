@@ -27,3 +27,19 @@ makereadythegulp (){
 	npm install -g gulp
 	npm install
 }
+
+# Get a public key from one of your colleagues.
+# @param personal_access_token The key you've set in github.
+# @param username The username for which you want to get the key.
+get_public_key (){
+    local personal_access_token=$1
+    local username=$2
+
+    if [[ "$personal_access_token" == "" ]] || [[ "$username" == "" ]]
+    then
+        echo "usage: get_public_key <personal_access_token> <username>"
+    else
+		# echo "Getting public key for user $2…"
+		curl -s -u tommyvandevelde:$personal_access_token https://github.ncube.be/api/v3/users/$username/keys | grep key | awk -F':' '{ print $2}' | sed 's/"//g' | xargs echo
+    fi
+}

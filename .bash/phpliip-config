@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Still doesn't solve the fact that usr/bin/php shows up in "which".
+# alias php=/usr/local/php5/bin/php
+# alias phpv='/usr/local/php5/bin/php -v'
+
+# export PHPPath=/usr/local/php5
+# export PATH=$PATH:$PHPPath/bin
+
+export PATH=/usr/local/php5/bin:$PATH

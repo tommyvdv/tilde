@@ -13,10 +13,14 @@ source ~/.bash/homebrew-functions
 source ~/.bash/vlc-config
 source ~/.bash/go-config
 source ~/.bash/python-config
-source ~/.bash/phpbrew-config
+#source ~/.bash/phpbrew-config
+source ~/.bash/phpliip-config
 
 # wijs specific
 source ~/.bash/wijs-functions
+
+# temp
+source ~/.bash/temp-functions
 
 # ...
 alias ls='ls -GF'
