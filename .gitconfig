@@ -6,7 +6,7 @@
 
 # Allow for more regex fun.
 [grep]
-	extendRegexp = true
+  extendRegexp = true
 
 [include]
   path = .gitconfig-user
@@ -56,10 +56,14 @@
   lstn = log --date=relative --pretty=format:'%ad %C(yellow)%h %C(green)%an%Creset %s' -n
   pl = pull
   ft = fetch
-	bwransj = branch
+  bwransj = branch
 
   # [NOCLUE]
   #hub = !echo "https://github.com/"`git config remote.origin.url` | sed -E "s/[a-z]+@github\.com://" | sed "s/\.git$//"
   #hubn = !echo "https://github.com/"`git config remote.origin.url` | sed -E s/\[a-z\]+@github\.ncube.be\://
   #hub = !echo "https://github.ncube.be/"`git config remote.origin.url` | sed -E s/[a-z]+@github.ncube.be:// | sed -E s/.git$//
   #ncu = !sh -c 'HEAD=`git rev-parse HEAD` && SHA1=`[ "$0" = "sh" ] && echo $HEAD || echo $0` && echo `git hub`"/commit/"${HEAD}'
+
+# Learn about it first:
+#[rebase]
+#  autosquash = true
